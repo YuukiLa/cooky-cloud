@@ -74,7 +74,7 @@ public class UserVo implements Serializable {
 
     private String roleName;
 
-    private String perms;
+//    private String perms;
 
     public List<Integer> getRoleIds() {
         if (Strings.isNotEmpty(roleId)) {
