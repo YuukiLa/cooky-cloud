@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: cooky-music
+  cloud:
+    nacos:
+      config:
+        server-addr: ${nacos.url}:8848
+        group: DEFAULT_GROUP
+        prefix: cooky-music
+        file-extension: yaml
+      discovery:
+        server-addr: ${nacos.url}:8848

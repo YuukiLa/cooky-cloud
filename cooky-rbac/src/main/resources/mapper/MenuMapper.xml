@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuuki.cooky.rbac.mapper.MenuMapper">
+
+
+  <select id="findPermsByUser" resultType="com.yuuki.cooky.rbac.model.entity.Menu">
+    select distinct m.perms
+    from t_role r
+           left join t_user_role ur on (r.id = ur.role_id)
+           left join t_user u on (u.id = ur.user_id)
+           left join t_role_menu rm on (rm.role_id = r.id)
+           left join t_menu m on (m.id = rm.menu_id)
+    where u.username = #{username}
+      and m.perms is not null
+      and m.perms &lt;&gt; ''
+  </select>
+
+    <select id="findUserMenu" resultType="com.yuuki.cooky.rbac.model.entity.Menu">
+        select m.*
+        from t_menu m
+        where m.type &lt;&gt; 1
+          and m.id in
+              (select distinct rm.menu_id
+               from t_role_menu rm
+                        left join t_role r on (rm.role_id = r.id)
+                        left join t_user_role ur on (ur.role_id = r.id)
+                        left join t_user u on (u.id = ur.user_id)
+               where u.username = #{username})
+    </select>
+
+</mapper>

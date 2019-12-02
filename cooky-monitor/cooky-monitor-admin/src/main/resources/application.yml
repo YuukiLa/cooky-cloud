@@ -1,0 +1,9 @@
+server:
+  port: 8063
+spring:
+  application:
+    name: cooky-admin
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848

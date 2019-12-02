@@ -1,0 +1,14 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: ${nacos.url}:8848
+        group: DEFAULT_GROUP
+        prefix: cooky-auth
+        file-extension: yaml
+      discovery:
+        server-addr: ${nacos.url}:8848
+    sentinel:
+      transport:
+        dashboard: localhost:8970
+
