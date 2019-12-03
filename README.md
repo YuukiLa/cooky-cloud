@@ -9,4 +9,4 @@
 - [ ] 整合sentinel
 - [ ] 本地音乐（fastdfs）
 - [ ] 参数校验（前后端）
-- [ ] swagger
+- [X] swagger
