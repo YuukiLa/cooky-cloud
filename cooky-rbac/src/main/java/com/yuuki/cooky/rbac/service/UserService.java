@@ -26,4 +26,6 @@ public interface UserService extends IService<User> {
     Response editUser(UserVo user);
 
     Response deleteUsers(String ids);
+
+    Response updateAvatar(String avatar);
 }

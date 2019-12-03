@@ -80,6 +80,15 @@ public class UserController  {
     }
 
     /**
+     * 更新头像
+     * @param avatar
+     * @return
+     */
+    @PutMapping("/avatar/{avatar}")
+    public Response updateAvatar(@PathVariable String avatar) {
+        return userService.updateAvatar(avatar);
+    }
+    /**
      * 删除数据
      *
      * @param ids 主键

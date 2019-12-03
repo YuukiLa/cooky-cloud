@@ -25,6 +25,7 @@ public class UserDetailImpl implements UserDetails {
     private String email;
     private String phone;
     private String describe;
+    private String roleName;
 
 
 //    private List<SysRole> roleList;

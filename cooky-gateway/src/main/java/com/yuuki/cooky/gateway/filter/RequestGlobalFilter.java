@@ -42,9 +42,9 @@ public class RequestGlobalFilter implements GlobalFilter {
             originUri = uris.stream().findFirst().orElse(null);
         }
         if (url != null && route != null && originUri != null) {
-            log.info("转发请求：{}://{}{} --> 目标服务：{}，目标地址：{}://{}{}，执行时间：{} ms",
-                    originUri.getScheme(), originUri.getAuthority(), originUri.getPath(),
-                    route.getId(), url.getScheme(), url.getAuthority(), url.getPath(), executeTime
+            log.info("执行时间：{} ms，转发请求：{}://{}{} --> 目标服务：{}，目标地址：{}://{}{}",
+                    executeTime,originUri.getScheme(), originUri.getAuthority(), originUri.getPath(),
+                    route.getId(), url.getScheme(), url.getAuthority(), url.getPath()
             );
         }
     }

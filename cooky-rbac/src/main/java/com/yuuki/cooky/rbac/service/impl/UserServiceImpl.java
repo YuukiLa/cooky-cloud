@@ -1,7 +1,7 @@
 package com.yuuki.cooky.rbac.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.yuuki.cooky.common.model.PageInfo;
@@ -9,14 +9,16 @@ import com.yuuki.cooky.common.model.QueryRequest;
 import com.yuuki.cooky.common.model.Response;
 import com.yuuki.cooky.common.model.UserVo;
 import com.yuuki.cooky.common.util.Strings;
-import com.yuuki.cooky.rbac.model.entity.User;
 import com.yuuki.cooky.rbac.mapper.UserMapper;
+import com.yuuki.cooky.rbac.model.entity.User;
 import com.yuuki.cooky.rbac.model.entity.UserRole;
 import com.yuuki.cooky.rbac.service.UserRoleService;
 import com.yuuki.cooky.rbac.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -81,6 +83,16 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         this.removeByIds(strings);
         userRoleService.remove(new LambdaQueryWrapper<UserRole>().in(UserRole::getUserId,strings));
         return Response.success("删除成功");
+    }
+
+    @Override
+    public Response updateAvatar(String avatar) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = (String) authentication.getPrincipal();
+        this.update(new LambdaUpdateWrapper<User>()
+                .eq(User::getUsername, username)
+                .set(Strings.isNotEmpty(username),User::getAvatar,avatar));
+        return Response.success("更新成功");
     }
 
     private void setUserRole(UserVo user) {
