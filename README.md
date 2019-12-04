@@ -1,6 +1,6 @@
 ### COOKY CLOUD
 基于nacos的spring cloud项目- -<br>
-代码99.9999999999999999%摘抄 [FEBS CLOUD][https://github.com/wuyouzhuguli/FEBS-Cloud] 感谢帅逼鸟哥的贡献！
+代码99.9999999999999999%摘抄 [FEBS CLOUD](https://github.com/wuyouzhuguli/FEBS-Cloud) 感谢帅逼鸟哥的贡献！
 #### 功能清单（待定）
 - [x] 权限管理
 - [X] Spring boot Admin
@@ -11,6 +11,10 @@
 - [ ] 参数校验（前后端）
 - [X] swagger
 
+#### 交流
+帅逼也在~
+
+![qq](img/QQ.jpg)
 #### 部分截图
 
 ![1](img/TIM截图20191204200109.png)
