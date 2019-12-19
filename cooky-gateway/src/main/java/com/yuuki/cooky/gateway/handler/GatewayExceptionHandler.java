@@ -59,8 +59,8 @@ public class GatewayExceptionHandler extends DefaultErrorWebExceptionHandler {
         return RouterFunctions.route(RequestPredicates.all(), this::renderErrorResponse);
     }
 
-    @Override
-    protected int getHttpStatus(Map<String, Object> errorAttributes) {
-        return HttpStatus.INTERNAL_SERVER_ERROR.value();
-    }
+//    @Override
+//    protected int getHttpStatus(Map<String, Object> errorAttributes) {
+//        return HttpStatus.INTERNAL_SERVER_ERROR.value();
+//    }
 }

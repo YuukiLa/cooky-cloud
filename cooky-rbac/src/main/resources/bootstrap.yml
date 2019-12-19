@@ -1,12 +1,10 @@
 spring:
-  application:
-    name: cooky-gateway
   cloud:
     nacos:
       config:
         server-addr: ${nacos.url}:8848
         group: DEFAULT_GROUP
-        prefix: cooky-gateway
+        prefix: cooky-rbac
         file-extension: yaml
       discovery:
         server-addr: ${nacos.url}:8848

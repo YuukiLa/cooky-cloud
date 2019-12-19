@@ -8,7 +8,4 @@ spring:
         file-extension: yaml
       discovery:
         server-addr: ${nacos.url}:8848
-    sentinel:
-      transport:
-        dashboard: localhost:8970
 

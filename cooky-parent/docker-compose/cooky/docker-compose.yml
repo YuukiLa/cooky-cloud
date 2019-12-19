@@ -1,0 +1,98 @@
+version: '3'
+
+services:
+  cooky-admin:
+    image: cooky-admin:1.0
+    container_name: cooky-admin
+    networks:
+      - default
+      - cooky-net
+    command:
+      - "--nacos.url=nacos"
+    environment:
+      - "TZ=Asia/Shanghai"
+    ports:
+      - 8063:8063
+    restart: on-failure
+  cooky-gateway:
+    image: cooky-gateway:1.0
+    container_name: cooky-gateway
+    networks:
+      - default
+      - cooky-net
+    volumes:
+      - "/cooky/log:/log"
+    command:
+      - "--nacos.url=nacos"
+      - "--redis.url=redis"
+    environment:
+      - "TZ=Asia/Shanghai"
+    ports:
+      - 10000:10000
+    restart: on-failure
+  cooky-auth:
+    image: cooky-auth:1.0
+    container_name: cooky-auth
+    networks:
+      - default
+      - cooky-net
+    volumes:
+      - "/cooky/log:/log"
+    command:
+      - "--nacos.url=nacos"
+      - "--mysql.url=mysql"
+      - "--redis.url=redis"
+    environment:
+      - "TZ=Asia/Shanghai"
+    ports:
+      - 9999:9999
+    restart: on-failure
+  cooky-rbac:
+    image: cooky-rbac:1.0
+    container_name: cooky-rbac
+    networks:
+      - default
+      - cooky-net
+    volumes:
+      - "/cooky/log:/log"
+    command:
+      - "--cooky-gateway=cooky-gateway"
+      - "--nacos.url=nacos"
+      - "--mysql.url=mysql"
+    environment:
+      - "TZ=Asia/Shanghai"
+    ports:
+      - 8090:8090
+    restart: on-failure
+  cooky-music:
+    image: cooky-music:1.0
+    container_name: cooky-music
+    networks:
+      - default
+      - cooky-net
+    volumes:
+      - "/cooky/log:/log"
+    command:
+      - "--nacos.url=nacos"
+      - "--cooky-gateway=cooky-gateway"
+    environment:
+      - "TZ=Asia/Shanghai"
+    ports:
+      - 8091:8091
+    restart: on-failure
+  cooky-vue:
+    image: cooky-vue:1.0
+    container_name: cooky-vue
+    networks:
+      - default
+      - cooky-net
+    volumes:
+      - "/cooky/log:/log"
+    environment:
+      - "TZ=Asia/Shanghai"
+    ports:
+      - 80:80
+    restart: on-failure
+networks:
+  cooky-net:
+    external: true

@@ -6,4 +6,4 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: localhost:8848
+        server-addr: ${nacos.url}:8848
