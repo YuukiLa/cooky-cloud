@@ -11,7 +11,7 @@
  Target Server Version : 50723
  File Encoding         : 65001
 
- Date: 03/12/2019 14:05:24
+ Date: 19/12/2019 20:12:47
 */
 
 SET NAMES utf8mb4;
@@ -39,7 +39,7 @@ CREATE TABLE `oauth_client_details`  (
 -- ----------------------------
 -- Records of oauth_client_details
 -- ----------------------------
-INSERT INTO `oauth_client_details` VALUES ('cooky', NULL, '$2a$10$ZGPb6g8ZP8vtXCH9idIoX.y.9XMWy.8JbNWWIvGUcrXw4IqWdDjTW', 'app', 'password,refresh_token', NULL, NULL, 86, 8600000, NULL, NULL);
+INSERT INTO `oauth_client_details` VALUES ('cooky', NULL, '$2a$10$ZGPb6g8ZP8vtXCH9idIoX.y.9XMWy.8JbNWWIvGUcrXw4IqWdDjTW', 'app', 'password,refresh_token', NULL, NULL, 860000, 8600000, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for t_dept
@@ -83,7 +83,7 @@ CREATE TABLE `t_menu`  (
   `ct` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `mt` datetime(0) NULL DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_menu
@@ -105,6 +105,10 @@ INSERT INTO `t_menu` VALUES (15, 5, '', '', '', '删除角色', NULL, NULL, '', 
 INSERT INTO `t_menu` VALUES (16, 6, '', '', '', '新增菜单', NULL, NULL, '', 'menu:add', 1, NULL, NULL);
 INSERT INTO `t_menu` VALUES (17, 6, '', '', '', '修改菜单', NULL, NULL, '', 'menu:edit', 1, NULL, NULL);
 INSERT INTO `t_menu` VALUES (18, 6, '', '', '', '删除菜单', NULL, NULL, '', 'menu:del', 1, NULL, NULL);
+INSERT INTO `t_menu` VALUES (19, 0, 'Monitor', 'Layout', '/monitor', '系统监控', NULL, NULL, 'icon-pie-chart', '', 0, NULL, NULL);
+INSERT INTO `t_menu` VALUES (20, 19, 'Spring-Boot-Admin', 'components/management/spring-boot-admin/index', '/spring-boot-admin', 'SpringBootAdmin', NULL, NULL, '', 'monitor:admin', 0, NULL, NULL);
+INSERT INTO `t_menu` VALUES (21, 19, 'Swagger', 'components/management/swagger/index', '/swagger', 'Swagger', NULL, NULL, '', 'monitor:swagger', 0, NULL, NULL);
+INSERT INTO `t_menu` VALUES (22, 19, 'skywalking', 'components/management/skywalking/index', '/skywalking', 'skywalking', NULL, NULL, '', 'monitor:skywalking', 0, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for t_role
@@ -122,7 +126,7 @@ CREATE TABLE `t_role`  (
 -- ----------------------------
 -- Records of t_role
 -- ----------------------------
-INSERT INTO `t_role` VALUES (1, 'admin', 'admin', '2019-11-24 21:29:55', '2019-12-02 01:48:35');
+INSERT INTO `t_role` VALUES (1, 'admin', 'admin', '2019-11-24 21:29:55', '2019-12-18 12:25:48');
 INSERT INTO `t_role` VALUES (2, '测试', '测试', '2019-12-02 12:22:49', '2019-12-02 12:22:49');
 
 -- ----------------------------
@@ -154,11 +158,10 @@ INSERT INTO `t_role_menu` VALUES (1, 15);
 INSERT INTO `t_role_menu` VALUES (1, 16);
 INSERT INTO `t_role_menu` VALUES (1, 17);
 INSERT INTO `t_role_menu` VALUES (1, 18);
-INSERT INTO `t_role_menu` VALUES (2, 2);
-INSERT INTO `t_role_menu` VALUES (2, 3);
-INSERT INTO `t_role_menu` VALUES (2, 4);
-INSERT INTO `t_role_menu` VALUES (2, 5);
-INSERT INTO `t_role_menu` VALUES (2, 6);
+INSERT INTO `t_role_menu` VALUES (1, 19);
+INSERT INTO `t_role_menu` VALUES (1, 20);
+INSERT INTO `t_role_menu` VALUES (1, 21);
+INSERT INTO `t_role_menu` VALUES (1, 22);
 
 -- ----------------------------
 -- Table structure for t_user
@@ -183,7 +186,7 @@ CREATE TABLE `t_user`  (
 -- ----------------------------
 -- Records of t_user
 -- ----------------------------
-INSERT INTO `t_user` VALUES (1, 'Yuuki', '$2a$10$laxwd4fHEXjaFzmgt0uOtu6SUoNlP3gb3htLj3/8wMJWexTQ5jAwS', 'avatar.png', '0', 3, '806393858@qq.com', NULL, '超级管理员', 1, '2019-10-23 22:21:55', '2019-10-23 22:21:58');
+INSERT INTO `t_user` VALUES (1, 'Yuuki', '$2a$10$laxwd4fHEXjaFzmgt0uOtu6SUoNlP3gb3htLj3/8wMJWexTQ5jAwS', 'cae7dee8e340cde65a3b38f968427cac.jpeg', '0', 3, '806393858@qq.com', '15899998888', '超级管理员', 1, '2019-10-23 22:21:55', '2019-10-23 22:21:58');
 INSERT INTO `t_user` VALUES (2, 'test', '$2a$10$JA4LuaBPmuKrOFQdELnmqun8JwrzCJ9efLmpgR8DbFW54z.h603Ie', NULL, '1', 5, '', '', '测试', 1, NULL, NULL);
 
 -- ----------------------------
@@ -198,7 +201,7 @@ CREATE TABLE `t_user_role`  (
 -- ----------------------------
 -- Records of t_user_role
 -- ----------------------------
+INSERT INTO `t_user_role` VALUES (1, 2);
 INSERT INTO `t_user_role` VALUES (1, 1);
-INSERT INTO `t_user_role` VALUES (2, 2);
 
 SET FOREIGN_KEY_CHECKS = 1;
