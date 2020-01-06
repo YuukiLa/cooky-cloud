@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuuki.cooky.rbac.mapper.LoginLogMapper">
+
+
+  <select id="countLoginNum" resultType="map">
+      SELECT
+      count( tl.username ) AS 'num',
+      DATE_FORMAT( tl.login_time, '%m-%d' ) AS 'date'
+      FROM
+      t_login_log tl
+      WHERE
+      tl.login_time &lt; CURDATE( ) + 1 AND tl.login_time >= DATE_SUB( CURDATE( ), INTERVAL 6 DAY )
+      GROUP BY
+      DATE_FORMAT( tl.login_time, '%Y-%m-%d' )
+      ORDER BY
+      tl.login_time ASC
+  </select>
+
+
+</mapper>

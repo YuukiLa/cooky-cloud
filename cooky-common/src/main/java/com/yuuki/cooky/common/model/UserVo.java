@@ -5,11 +5,10 @@ import lombok.Data;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.util.CollectionUtils;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Data
@@ -24,6 +23,7 @@ public class UserVo implements Serializable {
     /**
      * 用户名
      */
+    @NotBlank(message = "{required}")
     private String username;
     /**
      * 密码
@@ -83,7 +83,7 @@ public class UserVo implements Serializable {
                     .collect(Collectors.toList());
         }
         if(CollectionUtils.isEmpty(this.roleIds)) {
-            return null;
+            return new ArrayList<>();
         }else {
             return this.roleIds;
         }

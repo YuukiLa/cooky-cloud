@@ -9,9 +9,12 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.validation.Valid;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
@@ -25,6 +28,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("menu")
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@Validated
 public class MenuController  {
     
     private final MenuService menuService;
@@ -60,7 +64,7 @@ public class MenuController  {
      */
     @PostMapping
     @PreAuthorize("hasAuthority('menu:add')")
-    public Response insert(@RequestBody Menu menu) {
+    public Response insert(@RequestBody @Valid Menu menu) {
         return Response.success(this.menuService.save(menu));
     }
 
@@ -72,7 +76,7 @@ public class MenuController  {
      */
     @PutMapping
     @PreAuthorize("hasAuthority('menu:edit')")
-    public Response update(@RequestBody Menu menu) {
+    public Response update(@RequestBody @Valid Menu menu) {
         return Response.success(this.menuService.updateById(menu));
     }
 

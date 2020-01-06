@@ -56,6 +56,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Response addUser(UserVo user) {
+        UserVo byUsername = findByUsername(user.getUsername());
+        if(byUsername!=null) {
+            return Response.faild("用户名已存在");
+        }
         User user1 = new User();
         BeanUtils.copyProperties(user,user1);
         user1.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));

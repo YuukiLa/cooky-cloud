@@ -5,14 +5,20 @@ import com.yuuki.cooky.common.model.QueryRequest;
 import com.yuuki.cooky.common.model.Response;
 import com.yuuki.cooky.common.model.UserVo;
 import com.yuuki.cooky.rbac.model.entity.User;
+import com.yuuki.cooky.rbac.service.LoginLogService;
 import com.yuuki.cooky.rbac.service.UserService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.RequiredArgsConstructor;
+import lombok.Value;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.io.Serializable;
 import java.util.Map;
 
@@ -25,11 +31,13 @@ import java.util.Map;
 @RestController
 @RequestMapping("user")
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@Validated
 public class UserController  {
     /**
      * 服务对象
      */
     private final UserService userService;
+    private final LoginLogService loginLogService;
 
     /**
      * 分页查询所有数据
@@ -41,6 +49,11 @@ public class UserController  {
     @GetMapping("/bulk")
     public Page selectAll(PageInfo params, User user) {
         return this.userService.selectUserWithRoleAndDept(params, user);
+    }
+
+    @PostMapping("/success")
+    public Response loginSuccess(HttpServletRequest request) {
+        return loginLogService.saveLoginLog(request);
     }
 
     /**
@@ -63,7 +76,7 @@ public class UserController  {
      */
     @PostMapping
     @PreAuthorize("hasAuthority('user:add')")
-    public Response insert(@RequestBody UserVo user) {
+    public Response insert(@RequestBody @Valid UserVo user) {
         return userService.addUser(user);
     }
 
@@ -75,7 +88,7 @@ public class UserController  {
      */
     @PutMapping
     @PreAuthorize("hasAuthority('user:edit')")
-    public Response update(@RequestBody UserVo user) {
+    public Response update(@RequestBody  @Valid UserVo user) {
         return userService.editUser(user);
     }
 

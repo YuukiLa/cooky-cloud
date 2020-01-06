@@ -31,25 +31,37 @@ public class QQMusicApiServiceImpl implements IMusicApiService {
     @PostConstruct
     public void  init() {
         cooikes = new HashMap<>();
-        String cookiesStr = "{\n" +
-                "\"pgv_pvi\":\"5226851328\",\n" +
-                "\"RK\":\"uDgUs/zRHJ\",\n" +
-                "\"ptcz\":\"530aeba18d952948bae0e2b53c37c2c75bc37e3464cbda820bc59e6fb9f9966d\",\n" +
-                "\"pgv_pvid\":\"5801970496\",\n" +
-                "\"o_cookie\":\"806393858\",\n" +
-                "\"pac_uid\":\"1_806393858\",\n" +
-                "\"tvfe_boss_uuid\":\"570b7b2708ee5460\",\n" +
-                "\"LW_uid\":\"G1V5k493x086x0E8g1z2s0F6x4\",\n" +
-                "\"LW_sid\":\"j1K5X6v9h0d3B2q435A2N0s7F6\",\n" +
-                "\"ts_refer\":\"www.google.com/\",\n" +
-                "\"ts_uid\":\"3761794214\",\n" +
-                "\"eas_sid\":\"R185m7G1u9W210v8q0Y824S057\",\n" +
-                "\"uin_cookie\":\"o0806393858\",\n" +
-                "\"ied_qq\":\"o0806393858\",\n" +
-                "\"pgv_info\":\"ssid=s2518792744\",\n" +
-                "\"pgv_si\":\"s2316213248\",\n" +
-                "\"userAction\":\"1\",\n" +
-                "\"_qpsvr_localtk\":\"0.9931133919108892\",\"ptisp\":\"cnc\",\"uin\":\"806393858\",\"qm_keyst\":\"Q_H_L_28mL9t50e0TtNSst8rS8KHHhpMh62VybwZG4V_0Cq2g7bC7PRbzt5-HS62g8Q45\",\"psrf_musickey_createtime\":\"1573476098\",\"psrf_qqopenid\":\"B53A10672D2EE87363A1C42EDD903D47\",\"psrf_qqaccess_token\":\"857F637967068FFD997276555DDCE580\",\"psrf_access_token_expiresAt\":\"1581252098\",\"psrf_qqrefresh_token\":\"BE53002C4426E657F20E005BDD98C5E5\",\"psrf_qqunionid\":\"9487EDAE62CB8012C3BCCBE7CBA34924\",\"qqmusic_fromtag\":\"66\",\"yq_index\":\"0\",\"yqq_stat\":\"0\",\"yq_playschange\":\"0\",\"yq_playdata\":\"\",\"player_exist\":\"1\",\"ts_last\":\"y.qq.com/portal/player.html\",\"yplayer_open\":\"0\"}";
+        String cookiesStr = "{\"pgv_pvi\":\"5226851328\"\n" +
+                ",\"RK\":\"uDgUs/zRHJ\"\n" +
+                ",\"ptcz\":\"530aeba18d952948bae0e2b53c37c2c75bc37e3464cbda820bc59e6fb9f9966d\" \n" +
+                ",\"pgv_pvid\":\"5801970496\"\n" +
+                ",\"o_cookie\":\"806393858\"\n" +
+                ",\"pac_uid\":\"1_806393858\"\n" +
+                ",\"tvfe_boss_uuid\":\"570b7b2708ee5460\"\n" +
+                ",\"LW_sid\":\"j1K5X6v9h0d3B2q435A2N0s7F6\"\n" +
+                ",\"ts_refer\":\"www.google.com/\"\n" +
+                ",\"ts_uid\":\"3761794214\"\n" +
+                ",\"eas_sid\":\"R185m7G1u9W210v8q0Y824S057\"\n" +
+                ",\"ied_qq\":\"o0806393858\"\n" +
+                ",\"uin_cookie\":\"o0806393858\" \n" +
+                ",\"psrf_qqopenid\":\"B53A10672D2EE87363A1C42EDD903D47\" \n" +
+                ",\"psrf_qqaccess_token\":\"857F637967068FFD997276555DDCE580\" \n" +
+                ",\"psrf_qqrefresh_token\":\"BE53002C4426E657F20E005BDD98C5E5\" \n" +
+                ",\"psrf_qqunionid\":\"9487EDAE62CB8012C3BCCBE7CBA34924\" \n" +
+                ",\"_qpsvr_localtk\":0.9934314838047118 \n" +
+                ",\"yqq_stat\":0 \n" +
+                ",\"pgv_info\":\"ssid=s217428654\"\n" +
+                ",\"pgv_si\":\"s8123897856\"\n" +
+                ",\"uin\":\"806393858\"\n" +
+                ",\"psrf_access_token_expiresAt\":1586091435 \n" +
+                ",\"qm_keyst\":\"Q_H_L_2igBJu50eGNPrnfH_N_q1Xq3bAIEyBBVd2q-mTi_ljVeUAqJSHEg6C15cGD_2i5\"\n" +
+                ",\"psrf_musickey_createtime\":\"1578315435\"\n" +
+                ",\"userAction\":1\n" +
+                ",\"player_exist\":1 \n" +
+                ",\"ts_last\":\"y.qq.com/portal/player.html\"\n" +
+                ",\"qqmusic_fromtag\":66\n" +
+                ",\"yplayer_open\":1 \n" +
+                ",\"yq_index\":0}";
         cooikes = JSON.parseObject(cookiesStr,Map.class);
     }
 

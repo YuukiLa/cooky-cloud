@@ -75,4 +75,5 @@ public class ClientDetail {
      */
     @TableField("autoapprove")
     private Byte autoapprove;
+
 }
