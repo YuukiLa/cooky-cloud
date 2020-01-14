@@ -2,6 +2,7 @@ package com.yuuki.cooky.rbac.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.yuuki.cooky.common.model.Response;
+import com.yuuki.cooky.common.util.CookyUtils;
 import com.yuuki.cooky.rbac.model.entity.LoginLog;
 import com.yuuki.cooky.rbac.mapper.LoginLogMapper;
 import com.yuuki.cooky.rbac.service.LoginLogService;
@@ -38,8 +39,7 @@ public class LoginLogServiceImpl extends ServiceImpl<LoginLogMapper, LoginLog> i
         LoginLog loginLog = new LoginLog();
         String username = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         loginLog.setUsername(username);
-        OAuth2AuthenticationDetails details = (OAuth2AuthenticationDetails) SecurityContextHolder.getContext().getAuthentication().getDetails();
-        loginLog.setIp(details.getRemoteAddress());
+        loginLog.setIp(CookyUtils.getIp(request));
         UserAgent userAgent = UserAgent.parseUserAgentString(request.getHeader("User-Agent"));
         Browser browser = userAgent.getBrowser(); //获取浏览器信息 
         OperatingSystem os = userAgent.getOperatingSystem(); //获取操作系统信息

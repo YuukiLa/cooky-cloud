@@ -33,7 +33,6 @@ public class UserController {
     }
 
 
-
     @GetMapping("/user")
     public Principal user(Principal member) {
         //获取当前用户信息

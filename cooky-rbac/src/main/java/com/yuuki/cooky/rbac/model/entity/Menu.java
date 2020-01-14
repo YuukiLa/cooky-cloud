@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 /**
@@ -55,7 +56,8 @@ public class Menu {
     /**
      * 类型（0：菜单，1：按钮）
      */
-    @NotBlank(message = "{required}")
+//    @NotBlank(message = "{required}")
+//    @Size(max = 1)
     private Integer type;
     /**
      * 创建时间

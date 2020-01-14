@@ -9,7 +9,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
+import java.net.InetSocketAddress;
 import java.net.URI;
+import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.LinkedHashSet;
 
@@ -34,6 +36,7 @@ public class RequestGlobalFilter implements GlobalFilter {
 
 
     private void printLog(ServerWebExchange exchange,long executeTime) {
+        InetSocketAddress remoteAddress = exchange.getRequest().getRemoteAddress();
         URI url = exchange.getAttribute(ServerWebExchangeUtils.GATEWAY_REQUEST_URL_ATTR);
         Route route = exchange.getAttribute(ServerWebExchangeUtils.GATEWAY_ROUTE_ATTR);
         LinkedHashSet<URI> uris = exchange.getAttribute(ServerWebExchangeUtils.GATEWAY_ORIGINAL_REQUEST_URL_ATTR);

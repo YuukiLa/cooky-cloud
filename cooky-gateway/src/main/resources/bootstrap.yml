@@ -10,4 +10,3 @@ spring:
         file-extension: yaml
       discovery:
         server-addr: ${nacos.url}:8848
-
