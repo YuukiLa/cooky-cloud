@@ -9,4 +9,6 @@ public interface IMusicApiService {
     List<SongVo> search(String keyword);
 
     SongVo getSongUrl(SongVo songVo);
+
+    Object getPlayList();
 }

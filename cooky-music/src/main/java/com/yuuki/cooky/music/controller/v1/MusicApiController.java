@@ -43,4 +43,9 @@ public class MusicApiController {
 
     }
 
+    @GetMapping("/playlist")
+    public Response playlist() {
+        return Response.success("success",qqMusicApiService.getPlayList());
+    }
+
 }

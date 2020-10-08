@@ -54,4 +54,9 @@ public class CloudMusicApiServiceImpl implements IMusicApiService {
         }
         return null;
     }
+
+    @Override
+    public Object getPlayList() {
+        return null;
+    }
 }

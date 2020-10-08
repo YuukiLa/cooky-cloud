@@ -60,6 +60,7 @@
         <module>../cooky-auth</module>
         <module>../cooky-gateway</module>
         <module>../cooky-rbac</module>
+        <module>../cooky-music</module>
     </modules>
 
 

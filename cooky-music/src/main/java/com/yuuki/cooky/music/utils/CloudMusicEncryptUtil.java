@@ -1,7 +1,7 @@
 package com.yuuki.cooky.music.utils;
 
+import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang3.RandomStringUtils;
-import sun.misc.BASE64Encoder;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
@@ -45,7 +45,7 @@ public class CloudMusicEncryptUtil {
 
             byte[] encrypted = cipher.doFinal(text.getBytes());
 
-            return new BASE64Encoder().encode(encrypted);
+            return Base64.encodeBase64String(encrypted);
         } catch (Exception e) {
             return "";
         }
