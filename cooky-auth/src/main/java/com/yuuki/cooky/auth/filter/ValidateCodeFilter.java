@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Slf4j
-@Component
+//@Component
 public class ValidateCodeFilter extends OncePerRequestFilter {
 
     @Autowired

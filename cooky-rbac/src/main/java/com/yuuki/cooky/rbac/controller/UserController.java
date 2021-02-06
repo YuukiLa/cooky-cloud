@@ -119,4 +119,9 @@ public class UserController  {
     public UserVo findByUserName(@PathVariable String username){
         return this.userService.findByUsername(username);
     }
+
+    @GetMapping("findByPhone/{phone}")
+    public UserVo findByPhone(@PathVariable String phone) {
+        return this.userService.findByPhone(phone);
+    }
 }

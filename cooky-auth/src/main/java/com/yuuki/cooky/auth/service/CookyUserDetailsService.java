@@ -1,7 +1,7 @@
 package com.yuuki.cooky.auth.service;
 
-import com.yuuki.cooky.auth.feigin.MenuService;
-import com.yuuki.cooky.auth.feigin.UserService;
+import com.yuuki.cooky.auth.feign.MenuService;
+import com.yuuki.cooky.auth.feign.UserService;
 import com.yuuki.cooky.auth.model.UserDetailImpl;
 import com.yuuki.cooky.common.model.UserVo;
 import lombok.RequiredArgsConstructor;

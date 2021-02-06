@@ -1,6 +1,6 @@
 package com.yuuki.cooky.auth.controller;
 
-import com.yuuki.cooky.auth.feigin.UserService;
+import com.yuuki.cooky.auth.feign.UserService;
 import com.yuuki.cooky.auth.service.ValidateCodeService;
 import com.yuuki.cooky.common.model.Response;
 import com.yuuki.cooky.common.model.UserVo;

@@ -41,7 +41,7 @@ public class MssWebResponseExceptionTranslator implements WebResponseExceptionTr
                 response.setMsg(message);
                 return status.body(response);
             }
-            message = "用户名或密码错误";
+            message = e.getMessage();
             response.setMsg(message);
             return status.body(response);
         }

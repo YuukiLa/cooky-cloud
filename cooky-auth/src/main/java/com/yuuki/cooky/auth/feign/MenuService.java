@@ -1,6 +1,6 @@
-package com.yuuki.cooky.auth.feigin;
+package com.yuuki.cooky.auth.feign;
 
-import com.yuuki.cooky.auth.feigin.fallback.MenuServiceFallback;
+import com.yuuki.cooky.auth.feign.fallback.MenuServiceFallback;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;

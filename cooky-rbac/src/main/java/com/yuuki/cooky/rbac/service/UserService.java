@@ -28,4 +28,6 @@ public interface UserService extends IService<User> {
     Response deleteUsers(String ids);
 
     Response updateAvatar(String avatar);
+
+    UserVo findByPhone(String phone);
 }

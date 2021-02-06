@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
-@EnableFeignClients(basePackages = {"com.yuuki.cooky.auth.feigin"})
+@EnableFeignClients(basePackages = {"com.yuuki.cooky.auth.feign"})
 @EnableRedis
 public class CookyAuthApplication {
 

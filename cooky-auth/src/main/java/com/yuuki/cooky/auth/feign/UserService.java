@@ -1,8 +1,7 @@
-package com.yuuki.cooky.auth.feigin;
+package com.yuuki.cooky.auth.feign;
 
-import com.yuuki.cooky.auth.feigin.fallback.UserServiceFallback;
+import com.yuuki.cooky.auth.feign.fallback.UserServiceFallback;
 import com.yuuki.cooky.common.model.UserVo;
-import feign.hystrix.FallbackFactory;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,4 +14,7 @@ public interface UserService {
 
     @GetMapping("/user/findByUsername/{username}")
     UserVo findByUserName(@PathVariable String username);
+
+    @GetMapping("/user/findByPhone/{phone}")
+    UserVo findByPhone(@PathVariable String phone);
 }

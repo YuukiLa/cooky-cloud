@@ -1,6 +1,6 @@
-package com.yuuki.cooky.auth.feigin.fallback;
+package com.yuuki.cooky.auth.feign.fallback;
 
-import com.yuuki.cooky.auth.feigin.UserService;
+import com.yuuki.cooky.auth.feign.UserService;
 import com.yuuki.cooky.common.model.UserVo;
 import feign.hystrix.FallbackFactory;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +15,12 @@ public class UserServiceFallback implements FallbackFactory<UserService> {
             @Override
             public UserVo findByUserName(String username) {
                 log.error("通过用户名查询用户发生异常：{}",throwable.getMessage());
+                return null;
+            }
+
+            @Override
+            public UserVo findByPhone(String phone) {
+                log.error("通过手机号查询用户发生异常：{}",throwable.getMessage());
                 return null;
             }
         };

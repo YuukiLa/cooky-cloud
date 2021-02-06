@@ -54,5 +54,19 @@
         LEFT JOIN t_role r ON r.id = ur.role_id
     group by  u.id, u.username, u.password, u.avatar, u.sex, u.dept_id, u.email, u.phone, u.describe, u.status, u.ct,u.mt
   </select>
+    <select id="findByPhone" resultType="com.yuuki.cooky.common.model.UserVo">
+      SELECT
+        u.id, u.username, u.password, u.avatar, u.sex, u.dept_id, u.email, u.phone, u.describe, u.status, u.ct,u.mt,
+        d.dept_name deptName,
+        GROUP_CONCAT(r.id) roleId,
+        GROUP_CONCAT(r.role_name) roleName
+      FROM
+        t_user u
+          LEFT JOIN t_dept d ON (u.dept_id = d.id)
+          LEFT JOIN t_user_role ur ON (u.id = ur.user_id)
+          LEFT JOIN t_role r ON r.id = ur.role_id
+      WHERE  u.phone = #{phone}
+      group by  u.id, u.username, u.password, u.avatar, u.sex, u.dept_id, u.email, u.phone, u.describe, u.status, u.ct,u.mt
+    </select>
 
 </mapper>

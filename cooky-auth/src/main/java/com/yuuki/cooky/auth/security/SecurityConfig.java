@@ -28,13 +28,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
-    @Autowired
-    ValidateCodeFilter validateCodeFilter;
+//    @Autowired
+//    ValidateCodeFilter validateCodeFilter;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.addFilterBefore(validateCodeFilter,UsernamePasswordAuthenticationFilter.class)
-                .requestMatchers().antMatchers("/oauth/**")
+        http.requestMatchers().antMatchers("/oauth/**")
                 .and()
                 .authorizeRequests()
                 .antMatchers("/oauth/**").authenticated()

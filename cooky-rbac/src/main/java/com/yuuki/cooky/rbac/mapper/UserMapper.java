@@ -17,6 +17,7 @@ public interface UserMapper extends BaseMapper<User> {
 
 
     UserVo findByUsername(@Param("username")String username);
+    UserVo findByPhone(@Param("phone")String phone);
 
     Page selectUserWithRoleAndDept(Page page,User user);
 }

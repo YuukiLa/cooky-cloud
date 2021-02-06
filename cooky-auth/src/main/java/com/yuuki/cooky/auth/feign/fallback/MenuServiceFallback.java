@@ -1,6 +1,6 @@
-package com.yuuki.cooky.auth.feigin.fallback;
+package com.yuuki.cooky.auth.feign.fallback;
 
-import com.yuuki.cooky.auth.feigin.MenuService;
+import com.yuuki.cooky.auth.feign.MenuService;
 import feign.hystrix.FallbackFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

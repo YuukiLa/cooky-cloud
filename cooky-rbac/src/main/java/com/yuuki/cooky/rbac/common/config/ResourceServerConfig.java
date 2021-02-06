@@ -23,7 +23,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         http.headers().frameOptions().disable()
                 .and().csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/findByUsername/**","/userPerms/**").permitAll()
+                .antMatchers("/findByUsername/**","/findByPhone/**","/userPerms/**").permitAll()
                 .and().httpBasic();
         // 开发阶段先都放开
 //        http.csrf().disable()

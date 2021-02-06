@@ -108,4 +108,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         }).collect(Collectors.toList());
         userRoleService.saveBatch(userRoles);
     }
+
+    @Override
+    public UserVo findByPhone(String phone) {
+        return this.userMapper.findByPhone(phone);
+    }
 }

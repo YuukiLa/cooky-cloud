@@ -1,8 +1,12 @@
 package com.yuuki.cooky.auth.config;
 
 import com.yuuki.cooky.auth.error.MssWebResponseExceptionTranslator;
+import com.yuuki.cooky.auth.feign.MenuService;
+import com.yuuki.cooky.auth.feign.UserService;
+import com.yuuki.cooky.auth.granter.CookyGranterCollection;
 import com.yuuki.cooky.auth.model.UserDetailImpl;
 import com.yuuki.cooky.auth.service.RedisClientDetailsService;
+import com.yuuki.cooky.common.util.RedisUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -25,6 +29,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
+import org.springframework.security.oauth2.provider.TokenGranter;
 import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
 import org.springframework.security.oauth2.provider.token.*;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
@@ -56,6 +61,12 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     DataSource dataSource;
     @Autowired
     RedisClientDetailsService redisClientDetailsService;
+    @Autowired
+    RedisUtils redisUtils;
+    @Autowired
+    UserService userService;
+    @Autowired
+    MenuService menuService;
 
     @Value("${cooky.jwt:false}")
     private boolean jwt;
@@ -105,10 +116,12 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+        TokenGranter tokenGranter = CookyGranterCollection.getTokenGranter(authenticationManager, endpoints, redisUtils, userService,menuService);
         endpoints.tokenStore(tokenStore())
                 .userDetailsService(userDetailsService)
                 .authenticationManager(authenticationManager)
                 .exceptionTranslator(exceptionTranslator);
+        endpoints.tokenGranter(tokenGranter);
         if(jwt){
             endpoints.accessTokenConverter(accessTokenConverter());
         }else {
