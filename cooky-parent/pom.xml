@@ -61,6 +61,7 @@
         <module>../cooky-gateway</module>
         <module>../cooky-rbac</module>
         <module>../cooky-music</module>
+        <module>cooky-starter</module>
     </modules>
 
 

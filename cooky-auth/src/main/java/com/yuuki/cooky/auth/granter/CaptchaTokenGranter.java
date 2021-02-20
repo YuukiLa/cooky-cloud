@@ -2,8 +2,9 @@ package com.yuuki.cooky.auth.granter;
 
 import com.yuuki.cooky.common.constant.CommonConstant;
 import com.yuuki.cooky.common.exception.CookyException;
-import com.yuuki.cooky.common.util.RedisUtils;
+
 import com.yuuki.cooky.common.util.Strings;
+import com.yuuki.starter.redis.RedisUtils;
 import lombok.SneakyThrows;
 import org.springframework.security.authentication.*;
 import org.springframework.security.core.Authentication;

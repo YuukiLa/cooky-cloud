@@ -1,4 +1,4 @@
-package com.yuuki.cooky.common.util;
+package com.yuuki.starter.redis;
 
 import org.apache.commons.lang3.RandomUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -353,8 +353,8 @@ public class RedisUtils {
      * @param end
      * @return
      */
-    public List<Object> subList(String key, Long start, Long end) {
-        return redisTemplate.opsForList().range(key, start, end);
+    public <T> List<T> subList(String key, Long start, Long end) {
+        return (List<T>) redisTemplate.opsForList().range(key, start, end);
     }
 
     /**

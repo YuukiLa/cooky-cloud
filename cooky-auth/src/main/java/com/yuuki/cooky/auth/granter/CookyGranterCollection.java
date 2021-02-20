@@ -2,7 +2,7 @@ package com.yuuki.cooky.auth.granter;
 
 import com.yuuki.cooky.auth.feign.MenuService;
 import com.yuuki.cooky.auth.feign.UserService;
-import com.yuuki.cooky.common.util.RedisUtils;
+import com.yuuki.starter.redis.RedisUtils;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.provider.CompositeTokenGranter;

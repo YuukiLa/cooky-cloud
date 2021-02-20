@@ -1,13 +1,12 @@
 package com.yuuki.cooky.auth.service;
 
 import com.alibaba.fastjson.JSONObject;
-import com.yuuki.cooky.common.util.RedisUtils;
 import com.yuuki.cooky.common.util.Strings;
+import com.yuuki.starter.redis.RedisUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.common.exceptions.InvalidClientException;
 import org.springframework.security.oauth2.provider.ClientDetails;
-import org.springframework.security.oauth2.provider.NoSuchClientException;
 import org.springframework.security.oauth2.provider.client.BaseClientDetails;
 import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
 import org.springframework.stereotype.Service;

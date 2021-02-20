@@ -6,8 +6,9 @@ import com.wf.captcha.base.Captcha;
 import com.yuuki.cooky.auth.properties.AuthProperties;
 import com.yuuki.cooky.auth.properties.ValidateCodeProperties;
 import com.yuuki.cooky.common.constant.CommonConstant;
-import com.yuuki.cooky.common.util.RedisUtils;
+
 import com.yuuki.cooky.common.util.Strings;
+import com.yuuki.starter.redis.RedisUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
